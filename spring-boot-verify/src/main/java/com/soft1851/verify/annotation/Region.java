@@ -1,4 +1,6 @@
-package com.soft1851.verify.Validator;
+package com.soft1851.verify.annotation;
+
+import com.soft1851.verify.Validator.RegionValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

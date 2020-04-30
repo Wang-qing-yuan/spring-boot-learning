@@ -1,5 +1,7 @@
 package com.soft1851.verify.Validator;
 
+import com.soft1851.verify.annotation.Region;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.HashSet;

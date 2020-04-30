@@ -1,10 +1,14 @@
 package com.soft1851.verify.entity;
 
+import com.soft1851.verify.annotation.PhoneNumber;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  * @author wqy
@@ -25,8 +29,10 @@ public class Person {
     @Min(18)
     private Integer age;
 
-    @Pattern(regexp = "^1(3|4|5|7|8)\\d{9}$", message = "手机号码格式错误")
-    @NotNull(message = "手机号码不能为空")
+//    @Pattern(regexp = "^1(3|4|5|7|8)\\d{9}$", message = "手机号码格式错误")
+//    @NotNull(message = "手机号码不能为空")
+    @PhoneNumber(message = "PhoneNumber格式、长度不正确")
+    @NotNull(message = "PhoneNumber 不能为空")
     private String phone;
 
     @NotNull(message = "email 不能为空")

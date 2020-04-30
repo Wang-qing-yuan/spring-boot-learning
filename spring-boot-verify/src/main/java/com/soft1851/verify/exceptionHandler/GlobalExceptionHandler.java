@@ -19,13 +19,13 @@ import java.util.Map;
 @ControllerAdvice(assignableTypes = {PersonController.class})
 public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String,String>> handleValidationException(
+    public ResponseEntity<Map<String,String>> handleValidationExceptions(
             MethodArgumentNotValidException ex) {
         Map<String,String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String filedName = ((FieldError) errors).getField();
+            String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
-            errors.put(filedName, errorMessage);
+            errors.put(fieldName, errorMessage);
         });
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
@@ -35,4 +35,3 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }
-
